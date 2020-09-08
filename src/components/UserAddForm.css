@@ -1,12 +1,16 @@
 h2 {
-    font-style: italic;
+  font-style: italic;
 }
 
 .user-add-form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .user-add-form input {
-    max-width: 50%;
+  max-width: 100%;
+  margin-bottom: 5px;
+}
+.user-add-form_checkbox label {
+  margin-right: 10px;
 }
