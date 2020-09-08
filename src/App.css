@@ -1,4 +1,3 @@
-/* Daca vrem ca aplicatia sa ocupe intreg viewport-ul. */
 .app {
   min-height: 100vh;
   display: flex;
@@ -30,6 +29,7 @@
   border-radius: 30px;
   padding: 10px;
   margin: 5px 5px;
+  outline: none;
 }
 .btn:hover {
   background-color: #d9d9d9;

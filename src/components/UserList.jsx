@@ -1,6 +1,7 @@
 import React from "react";
 import UserItem from "./UserItem";
 import "./UserList.css";
+
 function UserList(props) {
   const { users, removeUser } = props;
 

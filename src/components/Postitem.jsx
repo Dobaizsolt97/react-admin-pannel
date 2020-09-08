@@ -1,5 +1,6 @@
 import React from "react";
 import "./PostItem.css";
+
 const PostItem = ({ title, body }) => {
   return (
     <div className="post-item">

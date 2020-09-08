@@ -63,26 +63,26 @@ class App extends React.Component {
 
   submitAddForm(event, name, email, isGoldClient, salar, link) {
     event.preventDefault();
-
-    this.setState((prevState) => {
-      return {
-        users: [
-          ...prevState.users,
-          {
-            id: this.getMaxId(prevState.users) + 1,
-            name,
-            email,
-            isGoldClient,
-            salar,
-            link,
-          },
-        ],
-      };
-    });
+    if (name && email && salar) {
+      this.setState((prevState) => {
+        return {
+          users: [
+            ...prevState.users,
+            {
+              id: this.getMaxId(prevState.users) + 1,
+              name,
+              email,
+              isGoldClient,
+              salar,
+              link,
+            },
+          ],
+        };
+      });
+    }
   }
 
   render() {
-    console.log(this.state.users);
     return (
       <div
         className="app"
@@ -103,6 +103,7 @@ class App extends React.Component {
         </div>
 
         <h1>Admin panel</h1>
+
         <Card>
           <UserAddForm
             submitAddForm={(event, name, email, isGoldClient, salar, link) =>
@@ -110,6 +111,7 @@ class App extends React.Component {
             }
           />
         </Card>
+
         <div className="buttons">
           <button
             className="btn"
@@ -124,6 +126,7 @@ class App extends React.Component {
             Afiseaza Postari
           </button>
         </div>
+
         {this.state.displaying === "users" ? (
           <Card>
             <UserList

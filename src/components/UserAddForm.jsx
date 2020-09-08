@@ -1,5 +1,6 @@
 import React from "react";
 import "./UserAddForm.css";
+
 class UserAddForm extends React.Component {
   constructor(props) {
     super(props);
@@ -9,6 +10,7 @@ class UserAddForm extends React.Component {
       isGoldClient: false,
       link: "https://via.placeholder.com/150",
       salar: "",
+      validData: true,
     };
   }
 
@@ -20,7 +22,6 @@ class UserAddForm extends React.Component {
 
   render() {
     const { name, email, isGoldClient, salar, link } = this.state;
-    console.log(this.props.submitAddForm);
     return (
       <form
         className="user-add-form"
@@ -36,7 +37,7 @@ class UserAddForm extends React.Component {
         }
       >
         <h2>Adauga utilizatori:</h2>
-        <label htmlFor="name">Nume:</label>
+        <label htmlFor="name">*Nume:</label>
         <input
           type="text"
           name="name"
@@ -44,7 +45,7 @@ class UserAddForm extends React.Component {
             this.updateOnUserInput("name", event.target.value)
           }
         />
-        <label htmlFor="email">Email:</label>
+        <label htmlFor="email">*Email:</label>
         <input
           type="email"
           name="email"
@@ -63,7 +64,7 @@ class UserAddForm extends React.Component {
             }
           />
         </div>
-        <label htmlFor="salar">Salar</label>
+        <label htmlFor="salar">*Salar</label>
         <input
           type="number"
           name="salar"
@@ -80,7 +81,20 @@ class UserAddForm extends React.Component {
           }
         />
 
-        <input type="submit" value="Introdu utilizatorul" />
+        <input
+          type="submit"
+          value="Introdu utilizatorul"
+          onClick={() => {
+            if (!name || !email || !salar) {
+              this.setState({ validData: false });
+            } else {
+              this.setState({ validData: true });
+            }
+          }}
+        />
+        {this.state.validData ? null : (
+          <h4>Verifica te rog datele introduse</h4>
+        )}
       </form>
     );
   }
