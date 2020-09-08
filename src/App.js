@@ -14,6 +14,7 @@ class App extends React.Component {
       users: [],
       posts: [],
       displaying: "users",
+      funky: false,
     };
   }
 
@@ -34,10 +35,10 @@ class App extends React.Component {
   }
 
   changeBackgroundColor(event) {
-    this.setState({ background: event.target.value });
+    this.setState({ funky: false, background: event.target.value });
   }
   changeTextColor(event) {
-    this.setState({ text: event.target.value });
+    this.setState({ funky: false, text: event.target.value });
   }
 
   getMaxId(users) {
@@ -86,7 +87,16 @@ class App extends React.Component {
     return (
       <div
         className="app"
-        style={{ background: this.state.background, color: this.state.text }}
+        style={
+          this.state.funky
+            ? {
+                background:
+                  "linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab)",
+                animation: "gradient 15s ease infinite",
+                backgroundSize: "400% 400%",
+              }
+            : { background: this.state.background, color: this.state.text }
+        }
       >
         <div className="color-picker">
           <span>Schimba culoarea fundalului</span>
@@ -99,6 +109,13 @@ class App extends React.Component {
           <input
             type="color"
             onChange={(event) => this.changeTextColor(event)}
+          />
+
+          <input
+            className="funky"
+            type="button"
+            value="Get funky"
+            onClick={() => this.setState({ funky: true })}
           />
         </div>
 
